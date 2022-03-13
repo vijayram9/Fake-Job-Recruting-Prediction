@@ -103,9 +103,8 @@ Further pre-processing is required before textual data is used for any data mode
 
 The algorithms and techniques used in project are:
 
-  1.Natural Language Processing
-  2.Naïve Bayes Algorithm
-  3.SGD Classifier
+  1.Naïve Bayes Algorithm
+  2.SGD Classifier
   
 Naïve bayes and SGD Classifier are compared on accuracy and F1-scores and a final model is chosen. Naïve Bayes is the baseline model, and it is used because it can compute the conditional probabilities of occurrence of two events based on the probabilities of occurrence of each individual event, encoding those probabilities is extremely useful. A comparative model, SGD Classifier is used since it implements a plain stochastic gradient descent learning routine which supports different loss functions and penalties for classification. This classifier will need high penalties when classified incorrectly. These models are used on both the text and numeric data separately and the final results are combined.
 
