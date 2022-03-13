@@ -14,3 +14,4 @@ This project uses data provided from Kaggle. This data contains features that de
   
   ![image](https://user-images.githubusercontent.com/53687459/158058371-5f1ec806-6e14-4680-8ac3-aa85da5938ad.png)
 
+https://github.com/Anshupriya2694/Fake-Job-Posting-Prediction#problem-statement
