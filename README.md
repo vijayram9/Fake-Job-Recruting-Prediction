@@ -2,7 +2,7 @@
 # Definition
 # Project Overview
 
-Employment scams are on the rise. According to CNBC, the number of employment scams doubled in 2018 as compared to 2017. The current market situation has led to high unemployment. Economic stress and the impact of the coronavirus have significantly reduced job availability and the loss of jobs for many individuals. A case like this presents an appropriate opportunity for scammers. Many people are falling prey to these scammers using the desperation that is caused by an unprecedented incident. Most scammer do this to get personal information from the person they are scamming. Personal information can contain address, bank account details, social security number etc. I am a university student, and I have received several such scam emails. The scammers provide users with a very lucrative job opportunity and later ask for money in return. Or they require investment from the job seeker with the promise of a job. This is a dangerous problem that can be addressed through Machine Learning techniques and Natural Language Processing (NLP).
+In order to avoid fraudulent job postings on the internet, the paper proposes an automated tool based on machine learning-based classification techniques. Various classifiers are used to detect fraudulent web posts, and the results of those classifiers are compared to determine the best employment scam detection model. It aids in the detection of fake job postings among a large number of postings. For the detection of fraudulent job postings, two major types of classifiers are considered: single classifiers and ensemble classifiers. However, experimental results show that ensemble classifiers outperform single classifiers in detecting scams.
 
 This project uses data provided from Kaggle. This data contains features that define a job posting. These job postings are categorized as either real or fake. Fake job postings are a very small fraction of this dataset. That is as excepted. We do not expect a lot of fake jobs postings. This project follows five stages. The five stages adopted for this project are –
 
@@ -29,11 +29,7 @@ The models will be evaluated based on two metrics:
 
 As the formula suggests, this metric produces a ratio of all correctly categorized data points to all data points. This is particularly useful since we are trying to identify both real and fake jobs unlike a scenario where only one category is important. There is however one drawback to this metric. Machine learning algorithms tend to favor dominant classes. Since our classes are highly unbalanced a high accuracy would only be a representative of how well our model is categorizing the negative class (real jobs).
 
-  2.F1-Score: F1 score is a measure of a model’s accuracy on a dataset. The formula for this metric is –
-  
-  ![image](https://user-images.githubusercontent.com/53687459/158058479-deda5139-4312-4c61-85a0-d8be826f041d.png)
-  
-  F1-score is used because in this scenario both false negatives and false positives are crucial. This model needs to identify both categories with the highest possible score since both have high costs associated to it.
+ 2. Recall Score: The Recall is the ratio tp/(tp + fn) where tp is number of true positives and fn the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
   
 # Analysis
 # Data Exploration
@@ -103,14 +99,17 @@ Further pre-processing is required before textual data is used for any data mode
 
 The algorithms and techniques used in project are:
 
-  1.Naïve Bayes Algorithm
-  2.SGD Classifier
+   1. Naive Bayes
+   2. Stochastic Gradient Descent
+   3. Decision Tree Classifier
+   4. Random Forest(Oversampling&undersampling)
+   5. XGBoosting Classifier
+   6. KNNeighbors Classifier
+   7. GradientBoosting Classifier
+   8. Support Vector Machine
+   9. Logistic Regression
+   
   
-Naïve bayes and SGD Classifier are compared on accuracy and F1-scores and a final model is chosen. Naïve Bayes is the baseline model, and it is used because it can compute the conditional probabilities of occurrence of two events based on the probabilities of occurrence of each individual event, encoding those probabilities is extremely useful. A comparative model, SGD Classifier is used since it implements a plain stochastic gradient descent learning routine which supports different loss functions and penalties for classification. This classifier will need high penalties when classified incorrectly. These models are used on both the text and numeric data separately and the final results are combined.
-
-# Benchmark
-The benchmark model for this project is Naïve bayes. The overall accuracy of this model is 0.971 and the F1-score is 0.744. The reason behind using this model has been elaborated above. Any other model’s capabilities will be compared to the results of Naïve bayes.
-
 # Methodology
 Data Preprocessing
 The following steps are taken for text processing:
@@ -123,13 +122,12 @@ Lemmatization: The process of lemmatization groups in which inflected forms of w
 
 # Implementation
 A diagrammatic representation of the implementation of this project is given below. The dataset is split into text, numeric and y-variable. The text dataset is converted into a term-frequency matrix for further analysis. Then using sci-kit learn, the datasets are split into test and train datasets. The baseline model Naïve bayes and another model SGD is trained on the using the train set which is 70% of the dataset. The final outcome of the models based on two test sets – numeric and text are combined such that if both models say that a particular data point is not fraudulent only then a job posting is fraudulent. This is done to reduce the bias of Machine Learning algorithms towards majority classes. The trained model is used on the test set to evaluate model performance. The Accuracy and F1-score of the two models – Naïve bayes and SGD are compared and the final model for our analysis is selected.
-![image](https://user-images.githubusercontent.com/53687459/158059360-f813f3b1-ed36-42b9-9fa0-693bbf20f695.png)
 
 # Results
 # Model Evaluation and Validation
-The final model used for this analysis is – SGD. This is based on the results of the metrics as compared to the baseline model. The outcome of the baseline model and SGD are presented in the table below:
-![image](https://user-images.githubusercontent.com/53687459/158059384-32b5b31f-3df8-421d-8e6e-d85a0de13164.png)
-Based on these metrics, SGD has a slightly better performance than the baseline model. This is how the final model is chosen to be SGD.
+Tested every ML Algorithm with the processed dataset and find the Accuracy and Recall Score. And as for visualisation purpose confusion matrix is also drawn for every
+algorithm.
+
 
 # Justification
 As mentioned above, the final model performs better than the established benchmark of the baseline model. The model will be able to identify real jobs with a very high accuracy. However, it’s identification of fake jobs can still be improved upon.
